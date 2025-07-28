@@ -117,3 +117,41 @@ app.*.symbols
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
+
+
+# === Dart (puro) ===
+.dart_tool/
+.packages
+.pub/
+build/
+*.lock
+*.log
+
+# === Flutter ===
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+.melos_tool/
+android/.gradle/
+android/captures/
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/.symlinks/
+linux/flutter/ephemeral/
+macos/Flutter/ephemeral/
+windows/flutter/ephemeral/
+web/.dart_tool/
+web/build/
+
+# === IDEs ===
+.vscode/
+.idea/
+*.iml
+
+# === Arquivos do sistema operacional ===
+.DS_Store
+Thumbs.db
+
+# === Firebase ===
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
