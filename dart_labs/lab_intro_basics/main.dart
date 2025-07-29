@@ -65,3 +65,28 @@ while (i < 10) {
 print('Número ${i + 1}');
 i++;
 }
+
+// Coleções
+/*
+var frutas = ['Banana', 'Uva', 'Melão'];
+print(frutas);
+
+// a) acessando elementos
+print(frutas[0]);
+print(frutas.length);
+
+// b) adicionando elementos
+frutas.add('Maça');
+print(frutas);
+frutas.insert(2, 'Abacaxi');
+print(frutas);
+
+// var frutas2 = ['Abacate', ...frutas];
+// print(frutas2);
+
+// c) removendo elementos
+frutas.remove('Abacaxi');
+print(frutas);
+frutas.removeAt(1);
+print(frutas);
+*/
