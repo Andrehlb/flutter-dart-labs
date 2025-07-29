@@ -95,3 +95,7 @@ print(frutas);
 
 var frutas = ['Banana', 'Uva', 'Melão'];
 print(frutas);
+
+// forEach - executar uma função para cada elemento da lista
+frutas.forEach((fruta) => print(fruta[0]));
+
