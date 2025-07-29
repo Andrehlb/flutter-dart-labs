@@ -107,3 +107,6 @@ print(frutasMaiusculas);
 var frutasB = frutas.where((fruta) => fruta[0].toLowerCase() == 'b').toList();
 print(frutasB);
 
+// reduce(), fold()
+var numeros = List<int>.generate(10, (i) => Random().nextInt(9) + 1);
+print(numeros);
