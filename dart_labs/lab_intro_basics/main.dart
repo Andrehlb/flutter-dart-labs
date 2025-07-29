@@ -1,7 +1,7 @@
 // Função prijncipal
 /*
 
-01/07 - Introdução a Dart
+28/07 (01/07) - Introdução a Dart
 
 * Variáveis
 * Operadores
