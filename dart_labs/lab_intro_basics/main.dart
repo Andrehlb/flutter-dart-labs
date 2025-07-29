@@ -102,3 +102,8 @@ frutas.forEach((fruta) => print(fruta[0]));
 // map()
 var frutasMaiusculas = frutas.map((fruta) => fruta.toUpperCase()).toList();
 print(frutasMaiusculas);
+
+// where - filtragem
+var frutasB = frutas.where((fruta) => fruta[0].toLowerCase() == 'b').toList();
+print(frutasB);
+
