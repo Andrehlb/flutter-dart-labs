@@ -1,4 +1,20 @@
 // Função prijncipal
+/*
+
+01/07 - Introdução a Dart
+
+* Variáveis
+* Operadores
+* Controle de fluxo
+* Estruturas de repetição
+* Coleções - List, Map
+- Operações básicas
+- forEach(), map(), where(), reduce(), fold()
+- sort()
+* Classes e Objetos
+
+*/
+
 void main() {
     //variáveis
     String name = 'Voyager I';
