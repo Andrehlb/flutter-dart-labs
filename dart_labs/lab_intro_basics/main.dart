@@ -27,4 +27,16 @@ void main() {
     print('A sonda espacial ${name} foi lançada em ${year}!');
     print('Diâmetro da antena: ${antennaDiameter} metros');
 }
+// Fluxo de execução
+// 1. Declaração de variáveis
+// 2. Impressão de informações
+var idade = 65;
+if (idade >= 65) {
+    print('Fila preferencial');
+} else if (idade >= 18) {
+    print('Maior de idade');
+} else {
+    print('Menor de idade');
+}
 
+}
