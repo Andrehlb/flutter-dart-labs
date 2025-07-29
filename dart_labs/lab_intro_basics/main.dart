@@ -55,4 +55,7 @@ if (idade >= 65) {
     print('Menor de idade');
 }
 
+// Repetição
+for (var i = 0; i < 10; i++) {
+print('Número ${i + 1}');
 }
