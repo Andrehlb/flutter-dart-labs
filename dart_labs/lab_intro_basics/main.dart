@@ -34,11 +34,11 @@ void main() {
     print('A sonda espacial $name foi lançada em $year!');
     print('Diâmetro da antena: $antennaDiameter metros');
 
-    ou 
+    // ou 
 
     print('A sonda espacial $name foi lançada em $year!\nDiâmetro da antena: $antennaDiameter metros');
 
-    ou
+    // ou
 
     print('A sonda espacial ${name} foi lançada em ${year}!');
     print('Diâmetro da antena: ${antennaDiameter} metros');
@@ -67,7 +67,7 @@ i++;
 }
 
 // Coleções
-/*
+
 var frutas = ['Banana', 'Uva', 'Melão'];
 print(frutas);
 
@@ -81,15 +81,15 @@ print(frutas);
 frutas.insert(2, 'Abacaxi');
 print(frutas);
 
-// var frutas2 = ['Abacate', ...frutas];
-// print(frutas2);
+var frutas2 = ['Abacate', ...frutas];
+print(frutas2);
 
 // c) removendo elementos
 frutas.remove('Abacaxi');
 print(frutas);
 frutas.removeAt(1);
 print(frutas);
-*/
+
 
 // Métodos úteis
 
