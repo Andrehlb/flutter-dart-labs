@@ -59,3 +59,9 @@ if (idade >= 65) {
 for (var i = 0; i < 10; i++) {
 print('Número ${i + 1}');
 }
+
+var i = 0;
+while (i < 10) {
+print('Número ${i + 1}');
+i++;
+}
