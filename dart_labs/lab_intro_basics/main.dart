@@ -110,3 +110,9 @@ print(frutasB);
 // reduce(), fold()
 var numeros = List<int>.generate(10, (i) => Random().nextInt(9) + 1);
 print(numeros);
+
+// var soma = numeros.reduce((soma, numero) => soma + numero);
+var soma = numeros.fold(0, (soma, numero) => soma + numero);
+print(soma);
+
+}
