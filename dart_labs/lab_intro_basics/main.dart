@@ -90,3 +90,8 @@ print(frutas);
 frutas.removeAt(1);
 print(frutas);
 */
+
+// Métodos úteis
+
+var frutas = ['Banana', 'Uva', 'Melão'];
+print(frutas);
