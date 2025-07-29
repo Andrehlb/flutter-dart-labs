@@ -99,3 +99,6 @@ print(frutas);
 // forEach - executar uma função para cada elemento da lista
 frutas.forEach((fruta) => print(fruta[0]));
 
+// map()
+var frutasMaiusculas = frutas.map((fruta) => fruta.toUpperCase()).toList();
+print(frutasMaiusculas);
