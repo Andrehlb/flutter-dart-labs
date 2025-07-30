@@ -34,4 +34,35 @@ class TvShowModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  
+  void removeTvShow(TvShow tvShow, BuildContext context) {
+    final index = tvShows.indexOf(tvShow);
+    tvShows.remove(tvShow);
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${tvShow.title} removida!'),
+        duration: Duration(seconds: 3),
+        action: SnackBarAction(
+          label: 'DESFAZER',
+          onPressed: () {
+            tvShows.insert(index, tvShow);
+            notifyListeners();
+          },
+        ),
+      ),
+    );
+    notifyListeners();
+  }
+
+  void editTvShow(TvShow oldTvShow, TvShow newTvShow, BuildContext context) {
+    final index = tvShows.indexOf(oldTvShow);
+    tvShows[index] = newTvShow;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Série ${index + 1} foi atualizada!'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+    notifyListeners();
+  }
+}
