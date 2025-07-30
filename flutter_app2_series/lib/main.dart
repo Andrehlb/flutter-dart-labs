@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class HomePage extend StatelessWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
@@ -46,7 +46,7 @@ class HomePage extend StatelessWidget {
           title: Text('Game of Thrones'),
           subtitle: Text('8 temporadas'),
         ),
-      ]
-    );
+      ], ),
+    ); // ListView is misspelled here, it should be ListView   
   } // ListView is misspelled here, it should be ListView
 } // HomePage is misspelled here, it should be HomePage
