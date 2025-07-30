@@ -11,15 +11,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Eu Amo Séries 🎬',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheemeSeed: Colors.deepPurple,
-        useMaterial3: true,
-      ),
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World with Dart-Flutter'),
+        appBar: AppBar(title: const Text('Eu Amo Séries 🎬'),
+        ),
+          body: const Center(child: Text('Hello World with Dart-Flutter'),
         ),
       ), // Scaffold is misspelled here, it should be Scaffold
     );
