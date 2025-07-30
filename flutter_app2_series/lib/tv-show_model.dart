@@ -1,7 +1,7 @@
 class TvShow {
   final String title;
   final String stream;
-  final String rating;
+  final int rating;
   final String summary;
 
   TvShow({
