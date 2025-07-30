@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_app2_series/tv_show_data.dart';
+
 class TvShow {
-  final String title;
-  final String stream;
-  final int rating;
-  final String summary;
+  String title;
+  String stream;
+  int rating;
+  String summary;
 
   TvShow({
     required this.title,
@@ -11,3 +14,24 @@ class TvShow {
     required this.summary,
   });
 }
+
+class TvShowModel extends ChangeNotifier {
+  final List<TvShow> _tvShows = favTvShowList;
+  List<TvShow> get tvShows => _tvShows;
+
+  void addTvShow(TvShow tvShow, BuildContext context) {
+    tvShows.add(tvShow);
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '${tvShow.title} adicionada!',
+          textAlign: TextAlign.center,
+        ),
+        duration: Duration(seconds: 2),
+      ),
+    );
+    notifyListeners();
+  }
+
+  
