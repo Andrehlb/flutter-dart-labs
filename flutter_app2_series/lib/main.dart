@@ -1,52 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_app2_series/base_screen.dart';
+import 'package:flutter_app2_series/tv_show_form_screen.dart';
+import 'package:flutter_app2_series/custom_drawer.dart';
+import 'package:flutter_app2_series/my_theme_model.dart';
+import 'package:flutter_app2_series/tv_show_model.dart';
+import 'package:flutter_app2_series/tv_show_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    // ChangeNotifierProvider(
+    //   create: (context) => TvShowModel(),
+    //   child: const MainApp(),
+    // ),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => TvShowModel()),
+        ChangeNotifierProvider(create: (context) => MyThemeModel()),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
+final GoRouter _router = GoRouter(
+  routes: [
+    ShellRoute(
+      builder: (context, state, child) => BaseScreen(child: child),
+      routes: [
+        GoRoute(path: '/', builder: (context, state) => TvShowScreen()),
+        GoRoute(path: '/add', builder: (context, state) => TvShowFormScreen()),
+        GoRoute(
+          path: '/edit/:index',
+          builder: (context, state) {
+            final index = int.parse(state.pathParameters['index']!);
+            return TvShowFormScreen(
+              tvShow: context.read<TvShowModel>().tvShows[index],
+            );
+          },
+        ),
+      ],
+    ),
+  ],
+);
+
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _router,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Eu Amo Séries 🎬'),
-        ),
-          body: const Center(child: Text('Hello World with Dart-Flutter'),
-        ),
-      ), // Scaffold is misspelled here, it should be Scaffold
+      theme: context.read<MyThemeModel>().customTheme,
+      darkTheme: context.read<MyThemeModel>().customThemeDark,
+      themeMode: context.watch<MyThemeModel>().isDark
+          ? ThemeMode.dark
+          : ThemeMode.light,
     );
   }
 }
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Eu Amo Séries 🎬')),
-      body: ListView(children: const [
-        ListTile(
-          leading: Icon(Icons.tv),
-          title: Text('Breaking Bad'),
-          subtitle: Text('5 temporadas'),
-        ),
-        ListTile(
-          leading: Icon(Icons.tv),
-          title: Text('Stranger Things'),
-          subtitle: Text('4 temporadas'),
-        ),
-        ListTile(
-          leading: Icon(Icons.tv),
-          title: Text('Game of Thrones'),
-          subtitle: Text('8 temporadas'),
-        ),
-      ], ),
-    ); // ListView is misspelled here, it should be ListView   
-  } // ListView is misspelled here, it should be ListView
-} // HomePage is misspelled here, it should be HomePage
