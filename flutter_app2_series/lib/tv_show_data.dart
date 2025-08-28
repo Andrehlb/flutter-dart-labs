@@ -48,7 +48,7 @@ class TvShowCard extends StatelessWidget {
             tvShow.title == 'Peaky Blinders'
                 ? NetworkImageWithFallback(
                     networkUrl: tvShow.imageUrl,
-                    fallbackAsset: 'lib/assets/images/posterPeakBlinders-App2Series-Flutter.webp',
+                    fallbackAsset: 'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,
@@ -96,7 +96,7 @@ class TvShowCard extends StatelessWidget {
                   tvShow.title == 'Peaky Blinders'
                       ? NetworkImageWithFallback(
                           networkUrl: tvShow.imageUrl,
-                          fallbackAsset: 'lib/assets/images/posterPeakBlinders-App2Series-Flutter.webp',
+                          fallbackAsset: 'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
                           width: 120,
                           height: 180,
                           fit: BoxFit.cover,
