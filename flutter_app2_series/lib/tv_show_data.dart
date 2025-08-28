@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app2_series/rating_widget.dart';
 import 'package:flutter_app2_series/tv_show_model.dart';
+import 'package:flutter_app2_series/network_image_with_fallback.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -35,9 +36,40 @@ class TvShowCard extends StatelessWidget {
             ),
           ),
         ),
-        title: Text(
-          tvShow.title,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        title: Row(
+          children: [
+            Expanded(
+              child: Text(
+                tvShow.title,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(width: 8),
+            tvShow.title == 'Peaky Blinders'
+                ? NetworkImageWithFallback(
+                    networkUrl: tvShow.imageUrl,
+                    fallbackAsset: 'lib/assets/images/posterPeakBlinders-App2Series-Flutter.webp',
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                    borderRadius: BorderRadius.circular(6),
+                  )
+                : ClipRRect(
+                    borderRadius: BorderRadius.circular(6),
+                    child: Image.network(
+                      tvShow.imageUrl,
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        width: 40,
+                        height: 40,
+                        color: Colors.grey,
+                        child: Icon(Icons.broken_image),
+                      ),
+                    ),
+                  ),
+          ],
         ),
         subtitle: Text(
           tvShow.stream,
@@ -58,14 +90,46 @@ class TvShowCard extends StatelessWidget {
                   ),
                 ],
               ),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
+              content: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 10,
                 children: [
-                  Text('Streaming: ${tvShow.stream}'),
-                  Text('Rating: ${tvShow.rating}'),
-                  Text(tvShow.summary),
+                  tvShow.title == 'Peaky Blinders'
+                      ? NetworkImageWithFallback(
+                          networkUrl: tvShow.imageUrl,
+                          fallbackAsset: 'lib/assets/images/posterPeakBlinders-App2Series-Flutter.webp',
+                          width: 120,
+                          height: 180,
+                          fit: BoxFit.cover,
+                          borderRadius: BorderRadius.circular(8),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            tvShow.imageUrl,
+                            width: 120,
+                            height: 180,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) => Container(
+                              width: 120,
+                              height: 180,
+                              color: Colors.grey,
+                              child: Icon(Icons.broken_image),
+                            ),
+                          ),
+                        ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('Streaming: ${tvShow.stream}'),
+                        Text('Rating: ${tvShow.rating}'),
+                        SizedBox(height: 8),
+                        Text(tvShow.summary),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               actions: [
@@ -116,59 +180,69 @@ List<TvShow> favTvShowList = [
     stream: 'Netflix',
     rating: 10,
     summary: 'Um professor de química do ensino médio começa a fabricar metanfetamina para garantir o futuro de sua família.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg',
   ),
   TvShow(
     title: 'Stranger Things',
     stream: 'Netflix',
     rating: 9,
     summary: 'Um grupo de crianças enfrenta forças sobrenaturais e experimentos secretos em uma pequena cidade dos anos 80.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
   ),
   TvShow(
     title: 'Game of Thrones',
     stream: 'HBO Max',
     rating: 9,
     summary: 'Famílias nobres lutam pelo controle do Trono de Ferro em um mundo medieval repleto de intrigas e dragões.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7WUHnWGx5OO145IRxPDUkQSh4C7.jpg',
   ),
   TvShow(
     title: 'The Last of Us',
     stream: 'HBO Max',
     rating: 10,
     summary: 'Após um surto apocalíptico, um homem e uma jovem cruzam os EUA em busca de sobrevivência e esperança.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg',
   ),
   TvShow(
     title: 'The Crown',
     stream: 'Netflix',
     rating: 8,
     summary: 'A história do reinado da Rainha Elizabeth II e os desafios enfrentados pela família real britânica.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/4sixcvt93g9SZZPH5qQWDG9GhsH.jpg',
   ),
   TvShow(
     title: 'The Witcher',
     stream: 'Netflix',
     rating: 7,
     summary: 'Um caçador de monstros solitário luta para encontrar seu lugar em um mundo onde humanos podem ser mais cruéis que bestas.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/cZ0d3rtvXPVvuiX22sP79K3Hmjz.jpg',
   ),
   TvShow(
     title: 'The Boys',
     stream: 'Amazon Prime',
     rating: 8,
     summary: 'Um grupo tenta expor a verdade sobre super-heróis corruptos que abusam de seus poderes.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/mY7SeH4HFFxW1hiI6cWuwCRKptN.jpg',
   ),
   TvShow(
     title: 'Dark',
     stream: 'Netflix',
     rating: 9,
     summary: 'Mistérios de viagens no tempo afetam quatro famílias em uma pequena cidade alemã.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/5csl9cLXTMN2BjoQkYYHgUkfHbs.jpg',
   ),
   TvShow(
     title: 'Lupin',
     stream: 'Netflix',
     rating: 7,
     summary: 'Um mestre do disfarce se inspira em Arsène Lupin para vingar seu pai e enfrentar a elite francesa.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/sgxawbFB5Vi5OkPWQLNfl3dvkNJ.jpg',
   ),
   TvShow(
     title: 'Peaky Blinders',
     stream: 'Netflix',
     rating: 9,
     summary: 'Uma família de gângsteres lidera o submundo do crime em Birmingham após a Primeira Guerra Mundial.',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg',
   ),
 ];

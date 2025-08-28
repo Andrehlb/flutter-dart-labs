@@ -6,12 +6,14 @@ class TvShow {
   String stream;
   int rating;
   String summary;
+  String imageUrl;
 
   TvShow({
     required this.title,
     required this.stream,
     required this.rating,
     required this.summary,
+    required this.imageUrl,
   });
 }
 

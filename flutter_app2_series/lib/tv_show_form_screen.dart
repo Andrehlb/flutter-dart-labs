@@ -50,6 +50,7 @@ class _TvShowFormScreenState extends State<TvShowFormScreen> {
           stream: _streamController.text,
           summary: _summaryController.text,
           rating: _rating,
+          imageUrl: 'https://via.placeholder.com/500x750/666666/FFFFFF?text=No+Image', // Imagem padrão
         );
 
         isEditing
