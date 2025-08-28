@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app2_series/rating_widget.dart';
 import 'package:flutter_app2_series/tv_show_model.dart';
-import 'package:flutter_app2_series/network_image_with_fallback.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -45,30 +44,33 @@ class TvShowCard extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8),
-            tvShow.title == 'Peaky Blinders'
-                ? NetworkImageWithFallback(
-                    networkUrl: tvShow.imageUrl,
-                    fallbackAsset: 'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
-                    width: 40,
-                    height: 40,
-                    fit: BoxFit.cover,
-                    borderRadius: BorderRadius.circular(6),
-                  )
-                : ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
-                    child: Image.network(
-                      tvShow.imageUrl,
-                      width: 40,
-                      height: 40,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) => Container(
+            // Miniatura simples usando imagem local para Peaky Blinders
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                border: Border.all(color: Colors.grey, width: 1),
+              ),
+              child: tvShow.title == 'Peaky Blinders'
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child: Image.asset(
+                        'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
                         width: 40,
                         height: 40,
-                        color: Colors.grey,
-                        child: Icon(Icons.broken_image),
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          color: Colors.grey[300],
+                          child: Icon(Icons.image, size: 20),
+                        ),
                       ),
+                    )
+                  : Container(
+                      color: Colors.grey[300],
+                      child: Icon(Icons.image, size: 20),
                     ),
-                  ),
+            ),
           ],
         ),
         subtitle: Text(
@@ -93,30 +95,33 @@ class TvShowCard extends StatelessWidget {
               content: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  tvShow.title == 'Peaky Blinders'
-                      ? NetworkImageWithFallback(
-                          networkUrl: tvShow.imageUrl,
-                          fallbackAsset: 'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
-                          width: 120,
-                          height: 180,
-                          fit: BoxFit.cover,
-                          borderRadius: BorderRadius.circular(8),
-                        )
-                      : ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            tvShow.imageUrl,
-                            width: 120,
-                            height: 180,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) => Container(
+                  // Imagem maior na popup - retângulo com imagem local
+                  Container(
+                    width: 120,
+                    height: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey, width: 1),
+                    ),
+                    child: tvShow.title == 'Peaky Blinders'
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
                               width: 120,
                               height: 180,
-                              color: Colors.grey,
-                              child: Icon(Icons.broken_image),
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) => Container(
+                                color: Colors.grey[300],
+                                child: Icon(Icons.image, size: 50),
+                              ),
                             ),
+                          )
+                        : Container(
+                            color: Colors.grey[300],
+                            child: Icon(Icons.image, size: 50),
                           ),
-                        ),
+                  ),
                   SizedBox(width: 16),
                   Expanded(
                     child: Column(
