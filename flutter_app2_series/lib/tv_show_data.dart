@@ -44,26 +44,20 @@ class TvShowCard extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8),
-            // Miniatura simples - DEVE APARECER SEMPRE
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: tvShow.title == 'Peaky Blinders' ? Colors.red : Colors.blue,
-                borderRadius: BorderRadius.circular(6),
-                border: Border.all(color: Colors.white, width: 2),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.network(
+                tvShow.imageUrl,
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  width: 40,
+                  height: 40,
+                  color: Colors.grey,
+                  child: Icon(Icons.broken_image),
+                ),
               ),
-              child: tvShow.title == 'Peaky Blinders'
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: Image.asset(
-                        'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => 
-                          Icon(Icons.tv, color: Colors.white, size: 20),
-                      ),
-                    )
-                  : Icon(Icons.movie, color: Colors.white, size: 20),
             ),
           ],
         ),
@@ -89,26 +83,20 @@ class TvShowCard extends StatelessWidget {
               content: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Imagem maior na popup - DEVE APARECER SEMPRE
-                  Container(
-                    width: 120,
-                    height: 180,
-                    decoration: BoxDecoration(
-                      color: tvShow.title == 'Peaky Blinders' ? Colors.red : Colors.blue,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.white, width: 3),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      tvShow.imageUrl,
+                      width: 120,
+                      height: 180,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        width: 120,
+                        height: 180,
+                        color: Colors.grey,
+                        child: Icon(Icons.broken_image),
+                      ),
                     ),
-                    child: tvShow.title == 'Peaky Blinders'
-                        ? ClipRRect(
-                            borderRadius: BorderRadius.circular(5),
-                            child: Image.asset(
-                              'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) => 
-                                Icon(Icons.tv, color: Colors.white, size: 50),
-                            ),
-                          )
-                        : Icon(Icons.movie, color: Colors.white, size: 50),
                   ),
                   SizedBox(width: 16),
                   Expanded(
@@ -173,7 +161,7 @@ List<TvShow> favTvShowList = [
     stream: 'Netflix',
     rating: 10,
     summary: 'Um professor de química do ensino médio começa a fabricar metanfetamina para garantir o futuro de sua família.',
-    imageUrl: 'https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg',
+    imageUrl: 'https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg', // TMDB poster
   ),
   TvShow(
     title: 'Stranger Things',
