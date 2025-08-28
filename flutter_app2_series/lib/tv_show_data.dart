@@ -44,32 +44,26 @@ class TvShowCard extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8),
-            // Miniatura simples usando imagem local para Peaky Blinders
+            // Miniatura simples - DEVE APARECER SEMPRE
             Container(
               width: 40,
               height: 40,
               decoration: BoxDecoration(
+                color: tvShow.title == 'Peaky Blinders' ? Colors.red : Colors.blue,
                 borderRadius: BorderRadius.circular(6),
-                border: Border.all(color: Colors.grey, width: 1),
+                border: Border.all(color: Colors.white, width: 2),
               ),
               child: tvShow.title == 'Peaky Blinders'
                   ? ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(4),
                       child: Image.asset(
                         'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
-                        width: 40,
-                        height: 40,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => Container(
-                          color: Colors.grey[300],
-                          child: Icon(Icons.image, size: 20),
-                        ),
+                        errorBuilder: (context, error, stackTrace) => 
+                          Icon(Icons.tv, color: Colors.white, size: 20),
                       ),
                     )
-                  : Container(
-                      color: Colors.grey[300],
-                      child: Icon(Icons.image, size: 20),
-                    ),
+                  : Icon(Icons.movie, color: Colors.white, size: 20),
             ),
           ],
         ),
@@ -95,32 +89,26 @@ class TvShowCard extends StatelessWidget {
               content: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Imagem maior na popup - retângulo com imagem local
+                  // Imagem maior na popup - DEVE APARECER SEMPRE
                   Container(
                     width: 120,
                     height: 180,
                     decoration: BoxDecoration(
+                      color: tvShow.title == 'Peaky Blinders' ? Colors.red : Colors.blue,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.white, width: 3),
                     ),
                     child: tvShow.title == 'Peaky Blinders'
                         ? ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(5),
                             child: Image.asset(
                               'assets/images/posterPeakBlinders-App2Series-Flutter.webp',
-                              width: 120,
-                              height: 180,
                               fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) => Container(
-                                color: Colors.grey[300],
-                                child: Icon(Icons.image, size: 50),
-                              ),
+                              errorBuilder: (context, error, stackTrace) => 
+                                Icon(Icons.tv, color: Colors.white, size: 50),
                             ),
                           )
-                        : Container(
-                            color: Colors.grey[300],
-                            child: Icon(Icons.image, size: 50),
-                          ),
+                        : Icon(Icons.movie, color: Colors.white, size: 50),
                   ),
                   SizedBox(width: 16),
                   Expanded(
