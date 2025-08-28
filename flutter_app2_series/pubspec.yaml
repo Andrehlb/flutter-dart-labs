@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-# In Android, build-name is used as versionName while build-number used as versionCode.
+  go_router: ^16.0.0
 # Read more about Android versioning at https://developer.android.com/studio/publish/versioning
 # In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
 # Read more about iOS versioning at
